@@ -38,7 +38,7 @@ To get the initial setup page again you may call http://<hostname>/setup.
 
 ## Example image
 
-![example](https://github.com/fre4242/WifiTemperatureSensor/blob/main/WifiTemperatureSensorSample.png?raw=true)
+![example](https://github.com/fre4242/WifiTemperatureSensor/blob/main/WifiTemperatureSensorSample.png)
 
 ## Build
 The project is build with [PlatformIO](https://platformio.org/). The project is configured to build for the Wemos D1 Mini. To build the project you may open it in Visual Studio Code and use the PlatformIO extension. 
