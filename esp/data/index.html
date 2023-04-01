@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+<script>
+    var url = 'json';
+    function refresh() {
+        fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            const temp = parseInt(data.temp);
+            humMax = 0;
+            if (isNaN(temp)) { 
+                document.getElementById('temp').innerHTML = "---";
+                temp = 42;
+            } else {
+                document.getElementById('temp').innerHTML = temp + "&deg;C";
+                if (temp > 92) {
+                    color = "#ff3300";
+                    humMax = 8;
+                }
+                else if (temp >= 78) {
+                    color = "#ff5c33";
+                    humMax = 15;
+                }
+                else if (temp > 72) {
+                    color = "#e67300";
+                    humMax = 18;
+                }
+                else if (temp >= 60) {
+                    color = "#ff9900";
+                    humMax = 30;
+                }
+                else if (temp >= 55) {
+                    color = "#ffce33";
+                    humMax = 35;
+                }
+                else {
+                    color = "#FFFFFF";
+                }
+                document.getElementById('temp').style.color = color;
+            }
+            const gradient = parseInt(data.gradient);
+            if (isNaN(gradient)) { 
+                gradientChar = "";
+                color = "#FF0000"; // red
+            } else {
+                if (gradient == 0) {
+                    gradientChar = "&#10145;"; // Arrow right
+                    if (temp >= 70) {
+                        color = "#00FF00"; // green
+                    }
+                    else {
+                        color = "#ff8a00"; // orange
+                    }
+                }
+                else if (gradient >= 2) {
+                    gradientChar = "&#8599;"; // Arrow top
+                    if (temp >= 90) {
+                        color = "#ff0000"; // red
+                    }
+                    else if (temp >= 80) {
+                        color = "#ff8a00"; // orange
+                    }
+                    else {
+                        color = "#00FF00"; // green
+                    }
+                }
+                else if (gradient >= 1) {
+                    gradientChar = "&#8599;"; // Arrow top
+                    if (temp >= 90) {
+                        color = "#ff8a00"; // orange
+                    }
+                    else if (temp >= 80) {
+                        color = "#FFFFFF"; // white
+                    }
+                    else {
+                        color = "#00FF00"; // green
+                    }
+                }
+                else if (gradient <= -2) {
+                    gradientChar = "&#8600;"; // Arrow top
+                    if (temp >= 90) {
+                        color = "#00FF00"; // green
+                    }
+                    else if (temp >= 80) {
+                        color = "#ff8a00"; // orange
+                    }
+                    else {
+                        color = "#ff0000"; // red
+                    }
+                }
+                else if (gradient <= -1) {
+                    gradientChar = "&#8600;"; // Arrow top
+                    if (temp >= 90) {
+                        color = "#00FF00"; // green
+                    }
+                    else if (temp >= 80) {
+                        color = "#FFFFFF"; // white
+                    }
+                    else if (temp >= 70) {
+                        color = "#ff8a00"; // orange
+                    }
+                    else {
+                        color = "#ff0000"; // red
+                    }
+                }
+            }
+            document.getElementById('gradient').innerHTML = gradientChar;
+            document.getElementById('gradient').style.color = color;
+            document.getElementById('labelTemp').style.color = color;
+
+            const humidity = parseInt(data.humidity);
+            if (isNaN(humidity)) { 
+                document.getElementById('humidity').innerHTML = "---";
+            } else {
+                document.getElementById('humidity').innerHTML = humidity + "%";
+                color = (humMax > 0) ? (humidity <= humMax ? "#5cd65c" : "ff4500") : "#FFFFFF";
+                document.getElementById('humidity').style.color = color;
+            }
+            console.log(data);
+            setTimeout(refresh, 5000);
+        }).catch(function () {
+            console.log("Failed to read json from " + url);
+            setTimeout(refresh, 6000);
+            document.getElementById('temp').innerHTML = "---";
+            document.getElementById('humidity').innerHTML = "---";
+        });
+    }
+    refresh();    
+</script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      html {
+         height: 100%;
+      }
+      body {
+        background-color: black;
+        color: white;
+        height: 100%;
+        margin: 0;
+      }
+      
+      #container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      #box { 
+        flex: 1;
+        border:0.5em solid gray; 
+        padding: 15px;
+        margin-bottom: 2em;
+      }
+      #labelTemp {
+        font-size: 6vh;
+        text-align: center;
+        color: lightgreen;
+      }
+      #labelHum {
+        font-size: 6vh;
+        text-align: center;
+        color: white;
+      }
+      #gravity {
+        font-size: 10vh;
+        font-weight: bold;
+        text-align: center;
+        color: lightgreen;
+      }
+      #temp {
+        font-size: 17vh;
+        text-align: center;
+        color: white;
+      }
+      #humidity {
+        font-size: 17vh;
+        text-align: center;
+        color: white;
+      }
+  </style>
+</head>
+<body>
+    <section id="container">
+        <div id="box">
+            <div id="labelTemp">Temperature&nbsp;<span id="gradient">&#x2192;</span></div>
+            <div id="temp">---</div>
+        </div>
+        <div id="box">
+            <div id="labelHum">Humidity</div>
+            <div id="humidity">---</div>
+        </div>
+    </section>
+</body>
+</html>
