@@ -9,6 +9,12 @@ In my environment it is used for a temperature monitoring of a garden sauna with
 ## Hardware
 * Wemos D1 Mini (ESP8266)
 * HTU21D
+* The wiring is as follows:
+    * D1 (GPIO5) -> SCL
+    * D2 (GPIO4) -> SDA
+    * 3.3V -> VCC
+    * GND -> GND
+    * For an example look here: http://www.esp8266learning.com/esp8266-sht21-humidity-temperature-sensor-example.php
 
 It uses the following libraries:
     * [iotWebConf](https://registry.platformio.org/libraries/prampec/IotWebConf?version=2.3.3) for configuration
@@ -38,7 +44,7 @@ To get the initial setup page again you may call http://<hostname>/setup.
 
 ## Example image
 
-![example](https://github.com/fre4242/WifiTemperatureSensor/blob/main/WifiTemperatureSensorSample.png?raw=true)
+![example](<img src="https://github.com/fre4242/WifiTemperatureSensor/blob/main/WifiTemperatureSensorSample.png" width="300">)
 
 ## Build
 The project is build with [PlatformIO](https://platformio.org/). The project is configured to build for the Wemos D1 Mini. To build the project you may open it in Visual Studio Code and use the PlatformIO extension. 
