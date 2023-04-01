@@ -33,7 +33,7 @@ The configuration is done via the web page. As many esp8266 projects do the devi
 After the configuration is done the device will connect to the WiFi network and the web page will be available. The web page is available at http://<hostname>/. The hostname is the hostname configured in the configuration. The default is "WifiTemperatureSensor".The web page shows the temperature and humidity. The temperature is shown in °C. The humidity is shown in %. 
 The temperature is shown in a color which indicates good for sauna usage depending upon the gradient.  
 
-You may all http://<hostname>/json to get the temperature and humidity in JSON format. This is intended to be used by other applications. The JSON format is:
+You may all http://<<<hostname>>>/json to get the temperature and humidity in JSON format. This is intended to be used by other applications. The JSON format is:
 ```
 {
   "temperature": 23.5,
@@ -44,7 +44,7 @@ To get the initial setup page again you may call http://<hostname>/setup.
 
 ## Example image
 
-![example](<img src="https://github.com/fre4242/WifiTemperatureSensor/blob/main/WifiTemperatureSensorSample.png" width="300">)
+<img src="https://github.com/fre4242/WifiTemperatureSensor/blob/main/WifiTemperatureSensorSample.png" width="300">
 
 ## Build
 The project is build with [PlatformIO](https://platformio.org/). The project is configured to build for the Wemos D1 Mini. To build the project you may open it in Visual Studio Code and use the PlatformIO extension. 
