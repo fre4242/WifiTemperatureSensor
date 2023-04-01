@@ -1,4 +1,4 @@
-# WifiTempertureSensor
+# WifiTemperatureSensor
 This project provides a wemos d1 mini (esp8266) based temperature sensor with a simple web page. 
 It's based on esp8266 connected to a HTU21D temperature sensor. The sensor is connected to the ESP8266 via I2C. The ESP8266 provides a simple web page to display the temperature and humidity. The configuration is stored in the ESP8266's flash memory.
 The device does not have a display. It provides a web page which is intended to be used on a mobile device to display the temperature and humidity as large as possible.
@@ -38,7 +38,15 @@ To get the initial setup page again you may call http://<hostname>/setup.
 
 ## Example image
 
-![example](https://github.com/fre4242/WifiTemperatureSensor/image.jpg?raw=true)
+![example](https://github.com/fre4242/WifiTemperatureSensor/blob/main/WifiTemperatureSensorSample.png?raw=true)
+
+## Build
+The project is build with [PlatformIO](https://platformio.org/). The project is configured to build for the Wemos D1 Mini. To build the project you may open it in Visual Studio Code and use the PlatformIO extension. 
+The content of the web page (index.html and favicon.ico) is not embedded into the binary. You need to flash the web page content in the data folder to the wemos d1 mini by calling the platformio command "upload filesystem image". 
+
+## Android app
+There is an android app which can be used to display the temperature and humidity. The app is not available in the Google Play Store, but here in this repository.
+The app is a simple webview allowing easy access to the temperature sensor without the need to remember the hostname. The app is available in the android folder of this repository. The app is not signed. You need to enable "Install from unknown sources" in the Android settings to install the app or build it yourself by using AndroidStudio.
 
 ## License
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details
