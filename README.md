@@ -18,7 +18,7 @@ In my environment it is used for a temperature monitoring of a garden sauna with
     * GND -> GND
     * For an example look here: http://www.esp8266learning.com/esp8266-sht21-humidity-temperature-sensor-example.php
 
-It uses the following libraries:
+* It uses the following libraries:
     * iotWebConf (https://registry.platformio.org/libraries/prampec/IotWebConf?version=2.3.3) for configuration
     * HTU21D (https://registry.platformio.org/libraries/enjoyneering/HTU21D) for the temperature sensor
     * see also here https://github.com/enjoyneering/HTU21D
