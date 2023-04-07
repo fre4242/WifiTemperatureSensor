@@ -32,7 +32,7 @@ The configuration is done via the web page. As many esp8266 projects do the devi
 
 
 ## Usage
-After the configuration is done the device will connect to the WiFi network and the web page will be available. The web page is available at http://<hostname>/. The hostname is the hostname configured in the configuration. The default is "WifiTemperatureSensor".The web page shows the temperature and humidity. The temperature is shown in °C. The humidity is shown in %. 
+After the configuration is done the device will connect to the WiFi network and the web page will be available. The web page is available at http://hostname/. The hostname is the hostname configured in the configuration. The default is "WifiTemperatureSensor".The web page shows the temperature and humidity. The temperature is shown in °C. The humidity is shown in %. 
 The temperature is shown in a color which indicates good for sauna usage depending upon the gradient.  
 
 You may call http://hostname/json to get the temperature and humidity in JSON format. This is intended to be used by other applications. The JSON format is:
